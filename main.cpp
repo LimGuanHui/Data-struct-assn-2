@@ -41,10 +41,10 @@ int main()
     ll.push_front(200);
     ll.push_front(2000);
     ll.push_front(20000);
-    //cout << ll.size() << endl;
-    //cout << ll.pop_back() << endl;
-    //cout << ll.pop_back() << endl;
-    //cout << ll.pop_front() << endl;
+    cout << ll.size() << endl;
+    cout << ll.pop_back() << endl;
+    cout << ll.pop_back() << endl;
+    cout << ll.pop_front() << endl;
     ll.insert_at(2, 10);
     cout << ll.pop_at(2) << endl;
     cout << endl;

@@ -147,11 +147,11 @@ int LinkedList::pop_at(int pos)
 
 size_t LinkedList::size()
 {
+    if (head == 0) return 0;
     int size = 0;
     Node *temp = head;
     while (temp)
     {
-
         size++;
         temp = temp->next;
     }
@@ -164,8 +164,8 @@ size_t LinkedList::size()
 //*******************************************************************//
 Queue::Queue()
 {
-    front = back;
-    back = front;
+    front = 0;
+    back = 0;
 }
 
 Queue::~Queue()
@@ -175,10 +175,16 @@ Queue::~Queue()
 
 void Queue::enqueue(int data)
 {
-    Node *temp = back;
-    Node *newnode = new Node(data);
-    back = newnode;
-    newnode->next = temp;
+    if (front)
+    {
+        Node *newnode = new Node(data);
+        back = newnode;
+    }
+    else 
+    {
+        front = new Node(data);
+        front->next = back;
+    }
 }
 
 int Queue::dequeue()
@@ -189,7 +195,15 @@ int Queue::dequeue()
 
 size_t Queue::size()
 {
-    return 0;
+    if (front == 0) return 0;
+    Node *frontnode = front;
+    int size = 0;
+    while (frontnode)
+    {
+        size++;
+        frontnode = frontnode->next;
+    }
+    return size;
 }
 
 //*******************************************************************//
@@ -197,7 +211,7 @@ size_t Queue::size()
 //*******************************************************************//
 Stack::Stack()
 {
-
+    top = 0;
 }
 
 Stack::~Stack()
@@ -207,7 +221,9 @@ Stack::~Stack()
 
 void Stack::push(int data)
 {
-
+    Node *newNode = new Node(data);
+    newNode->next = top;
+    top = newNode;
 }
 
 int Stack::pop()
@@ -217,5 +233,14 @@ int Stack::pop()
 
 size_t Stack::size()
 {
-    return 0;
+    if (top == 0) return 0;
+    int size = 0;
+    Node *temp = top;
+    while (temp->next)
+    {
+        size++;
+        temp = temp->next;
+    }
+
+    return size;
 }
