@@ -41,6 +41,9 @@ int main()
     ll.push_front(200);
     ll.push_front(2000);
     ll.push_front(20000);
+    ll.push_front(2);
+    ll.push_front(20);
+    ll.push_front(200);
     cout << ll.size() << endl;
     cout << ll.pop_back() << endl;
     cout << ll.pop_back() << endl;

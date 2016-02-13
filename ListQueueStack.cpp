@@ -100,13 +100,13 @@ void LinkedList::insert_at(int pos, int data)
     {
         int counter = 1;
         Node *temp = head;
-        while (counter < (pos))
+        while (counter != (pos-1))
         {
             counter += 1;
             temp = temp->next;
         }
         Node *temp2 = new Node(data);
-        temp2->next = temp->next;
+        temp2->next = temp->next->next;
         temp->next = temp2;
     }
 }
@@ -115,30 +115,23 @@ void LinkedList::insert_at(int pos, int data)
 
 int LinkedList::pop_at(int pos)
 {
-    /*if (pos == 0) return 0;
-    if (pos < 0) return 0;
-
-    int counter = 0;
     Node *temp = head;
-    while (counter < pos)
+    if (pos == 0 || pos < 0 || temp == 0) return 0;
+    if (pos >= (int)size()) return pop_back();
+    if (pos == 1) return pop_front();
+
+    int counter = 1;
+    while (counter < pos-1)
     {
-        if (temp == 0)
-        {
-            return 0;
-            break;
-        }
         counter += 1;
         temp = temp->next;
     }
-    if (counter == (pos - 1))
-    {
-        Node *deletenode = temp->next;
-        temp->next = temp->next->next;
-        int data = deletenode->data;
-        delete deletenode;
-        return data;
-    }*/
-    return 0;
+    Node *deletenode = temp->next;
+    temp->next = temp->next->next;
+    deletenode->next = 0;
+    int data = deletenode->data;
+    delete deletenode;
+    return data;
 }
 
 size_t LinkedList::size()
@@ -185,16 +178,22 @@ void Queue::enqueue(int data)
 
 int Queue::dequeue()
 {
+    if (front == 0) return 0;
 
-    return 0;
+    Node *temp = front;
+    int data = 0;
+    front = front->next;
+    data = temp->data;
+    delete temp;
+    return data;
 }
 
 size_t Queue::size()
 {
     if (front == 0) return 0;
     Node *frontnode = front;
-    int size = 0;
-    while (frontnode)
+    int size = 1;
+    while (frontnode->next)
     {
         size++;
         frontnode = frontnode->next;
@@ -224,7 +223,14 @@ void Stack::push(int data)
 
 int Stack::pop()
 {
-    return 0;
+    if (top == 0) return 0;
+
+    Node *temp = top;
+    int data = 0;
+    top = top->next;
+    data = temp->data;
+    delete temp;
+    return data;
 }
 
 size_t Stack::size()
