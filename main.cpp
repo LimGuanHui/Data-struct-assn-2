@@ -36,28 +36,31 @@ int main()
     // part 1
     cout << "Part 1" << endl;
     LinkedList ll;
+    ll.push_front(1);
     ll.push_front(2);
-    ll.push_front(20);
-    ll.push_front(200);
-    ll.push_front(2000);
-    ll.push_front(20000);
-    ll.push_front(2);
-    ll.push_front(20);
-    ll.push_front(200);
+    ll.push_front(3);
+    ll.push_front(4);
+    ll.push_front(5);
+    ll.push_back(1);
     cout << ll.size() << endl;
     cout << ll.pop_back() << endl;
     cout << ll.pop_back() << endl;
     cout << ll.pop_front() << endl;
     ll.insert_at(2, 10);
+    cout << ll.pop_at(0) << endl;
     cout << ll.pop_at(2) << endl;
+    cout << ll.pop_at(3) << endl;
     cout << endl;
 
     // part 2
     cout << "Part 2" << endl;
     Queue q;
-    q.enqueue(20);
-    q.enqueue(42);
     cout << q.dequeue() << endl;
+    q.enqueue(1);
+    q.enqueue(2);
+    cout << q.dequeue() << endl;
+    cout << q.dequeue() << endl;
+
     cout << q.size() << endl;
     cout << endl;
 
@@ -72,7 +75,7 @@ int main()
 
     // part 4
     cout << "Part 4" << endl;
-    const char* input = "<>";
+    const char* input = "";
     cout << Brackets(input) << endl;
     cout << endl;
 
