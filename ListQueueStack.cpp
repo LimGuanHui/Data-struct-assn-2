@@ -25,7 +25,13 @@ LinkedList::LinkedList()
 
 LinkedList::~LinkedList()
 {
-
+    if (size() != 0)
+    {
+        for (int x = 0; x < (int)(size()); x++)
+        {
+            pop_front();
+        }
+    }
 }
 
 void LinkedList::push_front(int data)
@@ -180,7 +186,13 @@ Queue::Queue()
 
 Queue::~Queue()
 {
-
+    if (size() != 0)
+    {
+        for (int x = 0; x < (int)(size()); x++)
+        {
+            dequeue();
+        }
+    }
 }
 
 void Queue::enqueue(int data)
@@ -249,7 +261,13 @@ Stack::Stack()
 
 Stack::~Stack()
 {
-
+    if (size() != 0)
+    {
+        for (int x = 0; x < (int)(size()); x++)
+        {
+            pop();
+        }
+    }
 }
 
 void Stack::push(int data)
@@ -263,6 +281,7 @@ void Stack::push(int data)
     else
     {
         top = new Node(data);
+        top->next = 0;
     }
     
 }
