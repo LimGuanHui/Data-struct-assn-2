@@ -31,18 +31,22 @@ using std::queue;
      
      for (unsigned int x = 0; input[x] != '\0'; ++x)
      {
+         
          switch (input[x])
          {
-         case '>': if (inputstack.top() != '<' || inputstack.size() == 0){ return false; }
+         case '>': if (inputstack.top() != '<' || inputstack.size() == 0 ){ return false; }
                    else  inputstack.pop(); break;                   
-         case ')': if (inputstack.top() != '(' || inputstack.size() == 0){ return false; }
+         case ')': if (inputstack.top() != '(' || inputstack.size() == 0 ){ return false; }
                    else inputstack.pop(); break;                    
-         case '}': if (inputstack.top() != '{' || inputstack.size() == 0){ return false; }
+         case '}': if (inputstack.top() != '{' || inputstack.size() == 0 ){ return false; }
                    else inputstack.pop(); break;                    
-         case ']': if (inputstack.top() != '[' || inputstack.size() == 0){ return false; }
+         case ']': if (inputstack.top() != '[' || inputstack.size() == 0 ){ return false; }
                    else inputstack.pop(); break;
+                   
          default: inputstack.push(input[x]); break;
-         }
+
+         } 
+         if (input[x] == inputstack.top() && x > 0) return false;
      }
      unsigned inputstacksize = inputstack.size();
      if (inputstacksize == 0)

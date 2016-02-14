@@ -111,9 +111,9 @@ void LinkedList::insert_at(int pos, int data)
             counter += 1;
             temp = temp->next;
         }
-        Node *temp2 = new Node(data);
-        temp2->next = temp->next;
-        temp->next = temp2;
+        Node *addnode = new Node(data);
+        addnode->next = temp->next;
+        temp->next = addnode;
     }
 }
 
